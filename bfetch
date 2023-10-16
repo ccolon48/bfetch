@@ -3,23 +3,45 @@
 # ( . .)  fetch script
 # c(*)(*)  written in pure bash by c:
 
+## variabless
 C1='\033[0;41m'
 C2='\033[0;42m'
 C3='\033[0;43m'
 C4='\033[0;44m'
 C5='\033[0;45m'
 C6='\033[0;46m'
-CR='\033[1;31m'      # red
-CM='\033[1;35m'      # magenta
-CB='\033[1;36m'      # cyan
-CC='\033[0;37m'      # black/white
-IT='\033[1m\033[3m'  # bold italic
+CR='\033[1;31m'  # red
+CM='\033[1;35m'  # magenta
+CB='\033[1;36m'  # cyan
+CC='\033[0;37m'  # black/white
 esc='\e[0m'
 
+## ascii art line by line
+A1="${CR}        <3        ${esc}"
+A2="${CC}       /  \       ${esc}"
+A3="${CB} (\ /)   ${CM}  (\ (\  ${esc}"
+A4="${CB} ( . .)  ${CM}  (. . ) ${esc}"
+A5="${CB} c(*)(*) ${CM} (*)(*)o ${esc}"
+
+##      ascii art     columns: info
 echo
-echo -e "${CR}         <3         ${esc}${IT}    os:${esc} $OSTYPE"
-echo -e "${CC}        /  \        ${esc}${IT} shell:${esc} $SHELL"
-echo -e "${CB}  (\ /)   ${CM}  (\ (\  ${esc}${IT}   term:${esc} $TERM"
-echo -e "${CB}  ( . .)  ${CM}  (. . ) ${esc}${IT} editor:${esc} $EDITOR"
-echo -e "${CB}  c(*)(*) ${CM} (*)(*)o ${esc}${IT}   cols:${esc} ${C1}  ${C2}  ${C3}  ${C4}  ${C5}  ${C6}  ${esc}"
+echo -e " ${A1} ${esc}     os: $OSTYPE"
+echo -e " ${A2} ${esc}  shell: $SHELL"
+echo -e " ${A3} ${esc}   term: $TERM"
+echo -e " ${A4} ${esc} editor: $EDITOR"
+echo -e " ${A5} ${esc}   cols: ${C1}  ${C2}  ${C3}  ${C4}  ${C5}  ${C6}  ${esc}"
 echo
+
+## exampe of different entry options.
+## some of them are not bash builtins,
+## thus add reliance on external utilities
+## and may slow down the script
+
+#   user: $USER
+# locale: $LANG
+#   term: $TERMINAL
+#   host: $(uname -n)
+#     os: $(uname -o)
+#   kern: $(uname -r)
+# uptime: $(upime -p | awk '{$1=""; print $0}')
+#  ...
