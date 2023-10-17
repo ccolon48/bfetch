@@ -32,7 +32,7 @@ echo -e " ${A4} ${esc} editor: $EDITOR"
 echo -e " ${A5} ${esc}   cols: ${C1}  ${C2}  ${C3}  ${C4}  ${C5}  ${C6}  ${esc}"
 echo
 
-## exampe of different entry options.
+## example of different entry options.
 ## some of them are not bash builtins,
 ## thus add reliance on external utilities
 ## and may slow down the script
