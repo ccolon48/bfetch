@@ -1,47 +1,39 @@
 #! /bin/bash
 # (\ /)  simpler
 # ( . .)  fetch script
-# c(*)(*)  written in pure bash by c:
+# c(*)(*)  written in bash by c:
+#
+# goal of this script is to be short
+# and to be easy to read and edit
+# to suit user's taste.
 
-## variabless
-C1='\033[0;41m'
-C2='\033[0;42m'
-C3='\033[0;43m'
-C4='\033[0;44m'
-C5='\033[0;45m'
-C6='\033[0;46m'
-CR='\033[1;31m'  # red
-CM='\033[1;35m'  # magenta
-CB='\033[1;36m'  # cyan
-CC='\033[0;37m'  # black/white
+## escape seqs for colors.
+C1='\033[1;31m'
+C2='\033[1;32m'
+C3='\033[1;33m'
+C4='\033[1;34m'
+C5='\033[1;35m'
+C6='\033[1;36m'
+CC='\033[0;30m'
+BB='\033[1m'
 esc='\e[0m'
+H='██'  # color char (U+2588 - full block)
 
 ## ascii art line by line
-A1="${CR}        <3        ${esc}"
+## it's recommended to end lines with _${esc}_
+## if ascii art has colors. it's done to not mess up
+## text colors with art colors.
+A1="${C1}        <3        ${esc}"
 A2="${CC}       /  \       ${esc}"
-A3="${CB} (\ /)   ${CM}  (\ (\  ${esc}"
-A4="${CB} ( . .)  ${CM}  (. . ) ${esc}"
-A5="${CB} c(*)(*) ${CM} (*)(*)o ${esc}"
+A3="${C4} (\ /)   ${C5}  (\ (\  ${esc}"
+A4="${C4} ( . .)  ${C5}  (. . ) ${esc}"
+A5="${C4} c(*)(*) ${C5} (*)(*)o ${esc}"
 
-##      ascii art     columns: info
+##         art  columns: info
 echo
-echo -e " ${A1} ${esc}     os: $OSTYPE"
-echo -e " ${A2} ${esc}  shell: $SHELL"
-echo -e " ${A3} ${esc}   term: $TERM"
-echo -e " ${A4} ${esc} editor: $EDITOR"
-echo -e " ${A5} ${esc}   cols: ${C1}  ${C2}  ${C3}  ${C4}  ${C5}  ${C6}  ${esc}"
+echo -e " ${A1}      ${BB}$USER@$HOSTNAME${esc}"
+echo -e " ${A2}      os: $OSTYPE"  # or $(lsb_release -sd) for distro name
+echo -e " ${A3}   wm/de: ${XDG_SESSION_DESKTOP^}"  # or $DESKTOP_SESSION
+echo -e " ${A4}  editor: $EDITOR"
+echo -e " ${A5}    cols: ${C1}${H}${C2}${H}${C3}${H}${C4}${H}${C5}${H}${C6}${H}${esc}"
 echo
-
-## example of different entry options.
-## some of them are not bash builtins,
-## thus add reliance on external utilities
-## and may slow down the script
-
-#   user: $USER
-# locale: $LANG
-#   term: $TERMINAL
-#   host: $(uname -n)
-#     os: $(uname -o)
-#   kern: $(uname -r)
-# uptime: $(upime -p | awk '{$1=""; print $0}')
-#  ...
